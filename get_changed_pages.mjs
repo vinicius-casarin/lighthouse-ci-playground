@@ -87,7 +87,7 @@ let pagesToCheck = []
 
 if (changedFiles) {
   for (const file of changedFiles) {
-    if (!file.startsWith('app/') || !file.endsWith('page.tsx')) {
+    if (!file.startsWith('src/app/') || !file.endsWith('page.tsx')) {
       const dependentPages = Array.from(await findDependentPages(file))
       pagesToCheck.push(
         ...dependentPages.filter((page) => page.endsWith('page.tsx'))
@@ -105,15 +105,15 @@ pagesToCheck = pagesToCheck
   .map((page) => cleanFileName(page))
   .filter(
     (it) =>
-      it.startsWith('app/') && // Include only Next.js pages
-      !it.startsWith('app/api')
+      it.startsWith('src/app/') && // Include only Next.js pages
+      !it.startsWith('src/app/api')
   )
   .map(
     (page) =>
       'http://localhost:3000' + // Prepend the host and port
       // Fill dynamic route segments with sample values
       // and remove parts of the file path with aren't included in the URL
-      getExamplePage(page.replace('/page', '').replace(/^app/, ''))
+      getExamplePage(page.replace('/page', '').replace(/^src\/app/, ''))
   )
   .sort()
 
