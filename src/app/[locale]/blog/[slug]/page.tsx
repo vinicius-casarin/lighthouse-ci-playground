@@ -124,6 +124,14 @@ export default function Blog({ params }: BlogParams) {
 				variant="display-strong-s">
 				{post.metadata.title}
 			</Heading>
+			<Heading
+				variant="display-strong-s">
+				{post.metadata.title}
+			</Heading>
+			<Heading
+				variant="display-strong-s">
+				{post.metadata.title}
+			</Heading>
 			<Flex
 				gap="12"
 				alignItems="center">
