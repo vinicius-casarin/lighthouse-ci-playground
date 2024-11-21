@@ -98,6 +98,12 @@ export default function Home(
 									variant="heading-default-xl">
 									{home.subline}
 								</Text>
+								<Text
+									wrap="balance"
+									onBackground="neutral-weak"
+									variant="heading-default-xl">
+									{home.subline}
+								</Text>
 							</Flex>
 						</RevealFx>
 						<RevealFx translateY="12" delay={0.4}>
