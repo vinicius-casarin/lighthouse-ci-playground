@@ -109,6 +109,8 @@ export default function Home(
 									{home.subline}
 									{home.subline}
 									{home.subline}
+									{home.subline}
+									{home.subline}
 								</Text>
 							</Flex>
 						</RevealFx>
