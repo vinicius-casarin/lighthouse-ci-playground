@@ -37,21 +37,3 @@ jobs:
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      - name: run Lighthouse CI on target branch (main)
-        run: |
-          git fetch origin main
-          git checkout main
-          npm install
-          npm run build
-          lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      - name: Comment on PR
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: Lighthouse Analysis Results
-          message: |
-            - **Lighthouse Report for PR Branch:** 
-            - **Lighthouse Report for Main Branch:**
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
