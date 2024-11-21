@@ -102,15 +102,7 @@ export default function Home(
 									wrap="balance"
 									onBackground="neutral-weak"
 									variant="heading-default-xl">
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
-									{home.subline}
+				
 								</Text>
 							</Flex>
 						</RevealFx>
