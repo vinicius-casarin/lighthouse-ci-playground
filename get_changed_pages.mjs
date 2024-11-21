@@ -113,7 +113,7 @@ pagesToCheck = pagesToCheck
       'http://localhost:3000' + // Prepend the host and port
       // Fill dynamic route segments with sample values
       // and remove parts of the file path with aren't included in the URL
-      getExamplePage(page.replace('/page', '').replace(/^src\/app/, ''))
+      getExamplePage(page.replace('/page', '').replace(/^src\/app/, '').replace('[locale]/', ''))
   )
   .sort()
 
