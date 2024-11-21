@@ -37,6 +37,9 @@ jobs:
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Extract PR branch report URL
+        id: pr-report-url
+        run: echo "PR_BRANCH_REPORT=$(lhci upload --target=temporary-public-storage | grep -o 'https://[^ ]*')" >> $GITHUB_ENV
       - name: run Lighthouse CI on target branch (main)
         run: |
           git fetch origin main
@@ -46,3 +49,15 @@ jobs:
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Extract main branch report URL
+        id: main-report-url
+        run: echo "MAIN_BRANCH_REPORT=$(lhci upload --target=temporary-public-storage | grep -o 'https://[^ ]*')" >> $GITHUB_ENV
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Lighthouse Analysis Results
+          message: |
+            - **Lighthouse Report for PR Branch:** ${{ env.PR_BRANCH_REPORT }}
+            - **Lighthouse Report for Main Branch:** ${{ env.MAIN_BRANCH_REPORT }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
