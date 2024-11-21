@@ -144,12 +144,6 @@ export default function Blog({ params }: BlogParams) {
 				fillWidth>
 				<CustomMDX source={post.content} />
 			</Flex>
-      <Flex
-				as="article"
-				direction="column"
-				fillWidth>
-				<CustomMDX source={post.content} />
-			</Flex>
 		</Flex>
 	)
 }
