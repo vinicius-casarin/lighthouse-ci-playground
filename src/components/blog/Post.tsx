@@ -57,6 +57,11 @@ export default function Post({ post, thumbnail }: PostProps) {
                         onBackground="neutral-weak">
                         {formatDate(post.metadata.publishedAt, false)}
                     </Text>
+                    <Text
+                        variant="label-default-s"
+                        onBackground="neutral-weak">
+                        {formatDate(post.metadata.publishedAt, false)}
+                    </Text>
                     { post.metadata.tag &&
                         <Tag
                             className="mt-8"
