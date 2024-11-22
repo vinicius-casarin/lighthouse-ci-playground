@@ -48,8 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 50
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: main
       - name: Use Node.js 18.17.0
         uses: actions/setup-node@v3
         with:
