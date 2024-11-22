@@ -55,7 +55,6 @@ async function findDependentPages(file, visited = new Set()) {
 }
 
 async function searchFor(file, keyword) {
-  console.log(file, keyword)
   if (existsSync(file)) {
     const stats = lstatSync(file)
     if (stats.isDirectory()) {

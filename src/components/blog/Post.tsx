@@ -52,6 +52,12 @@ export default function Post({ post, thumbnail }: PostProps) {
                         wrap="balance">
                         {post.metadata.title}
                     </Heading>
+                    <Heading
+                        as="h2"
+                        variant="heading-strong-l"
+                        wrap="balance">
+                        {post.metadata.title}
+                    </Heading>
                     <Text
                         variant="label-default-s"
                         onBackground="neutral-weak">
