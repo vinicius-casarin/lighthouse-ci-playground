@@ -31,9 +31,9 @@ async function findDependentPages(file, visited = new Set()) {
   const dependentFiles = (
     await Promise.all(
       [
-        './app',
-        './pages',
-        './components',
+        './src/app',
+        './src/pages',
+        './src/components',
         // ...
       ].map((path) => searchFor(path, searchString))
     )
