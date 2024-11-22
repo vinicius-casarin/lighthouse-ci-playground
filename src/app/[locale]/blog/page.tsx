@@ -77,6 +77,11 @@ export default function Blog(
                 marginBottom="l"
                 variant="display-strong-s">
                 {blog.title}
+                {blog.title}
+                {blog.title}
+                {blog.title}
+                {blog.title}
+                {blog.title}
             </Heading>
 			<Flex
 				fillWidth flex={1} direction="column">
