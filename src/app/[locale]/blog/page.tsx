@@ -90,6 +90,11 @@ export default function Blog(
 				<Posts range={[4]} columns="2" locale={locale}/>
 				<Posts range={[4]} columns="2" locale={locale}/>
 				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[4]} columns="2" locale={locale}/>
 			</Flex>
             {newsletter.display && (
                 <Mailchimp newsletter={newsletter} />
