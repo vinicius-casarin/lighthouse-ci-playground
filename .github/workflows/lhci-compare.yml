@@ -5,14 +5,51 @@ on:
     branches:
       - main
 jobs:
-  lhci:
-    name: Lighthouse
+  lhci-pr:
+    name: Lighthouse PR
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 50
           ref: ${{ github.event.pull_request.head.sha }}
+      - name: Use Node.js 18.17.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.0
+      - name: npm install, build
+        run: |
+          npm install
+          npm run build
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          separator: ","
+      - name: Find changed pages
+        run: node get_changed_pages.mjs ${{ steps.changed-files.outputs.all_modified_files }}
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Extract branch report URL
+        id: report-url
+        run: echo "BRANCH_REPORT=$(lhci upload --target=temporary-public-storage | grep -o 'https://[^ ]*')" >> $GITHUB_ENV
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: '- **Lighthouse Report for PR Branch:** ${{ env.BRANCH_REPORT }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  lhci-main:
+    name: Lighthouse Main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 50
+          ref: ${{ github.event.pull_request.base.sha }}
       - name: Use Node.js 18.17.0
         uses: actions/setup-node@v3
         with:
